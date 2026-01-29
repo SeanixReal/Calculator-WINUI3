@@ -25,17 +25,21 @@ Title="Calculator-WINUI3"
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Margin="10 0">
-            <TextBlock Text="123"
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" HorizontalScrollMode="Enabled">
+                <TextBlock Text="0"
                FontFamily="Aptos" 
                FontSize="40"
                HorizontalAlignment="Right"
                VerticalAlignment="Center"
-               Grid.Row="0"/>
+               Grid.Row="0"
+               x:Name="CalculatorViewBox"/>
+            </ScrollViewer>
         </Grid>
 
 
 
         <Grid Grid.Row="1" Padding="3">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -51,7 +55,9 @@ Title="Calculator-WINUI3"
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
+            
+            
+            
             <Grid.Resources>
                 <Style TargetType="Button" x:Key="BaseButtonStyle" BasedOn="{StaticResource DefaultButtonStyle}">
                     <Setter Property="FontSize" Value="18"/>
@@ -129,7 +135,14 @@ Title="Calculator-WINUI3"
             Style="{ThemeResource AccentButtonStyle}"
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
             Margin="1" FontSize="24"/>
-
+            <InfoBar x:Name="WarningInfoBar"
+             Title="Warning"
+             Message="Something might be wrong."
+             Severity="Warning"
+             IsOpen="False" VerticalAlignment="Stretch"
+             Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
         </Grid>
+
+        
     </Grid>
 </Window>
