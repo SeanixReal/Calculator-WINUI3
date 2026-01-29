@@ -1,19 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Window
-    x:Class="Calculator_WINUI3.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Calculator_WINUI3"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Title="Calculator-WINUI3">
+x:Class="Calculator_WINUI3.MainWindow"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:local="using:Calculator_WINUI3"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+mc:Ignorable="d"
+Title="Calculator-WINUI3"
+>
 
     <Window.SystemBackdrop>
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <StackPanel>
-        <TextBox></TextBox>
-    </StackPanel>
+    <Grid VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition MinHeight="330"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="280"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Margin="10 0">
+            <TextBlock Text="123"
+               FontFamily="Aptos" 
+               FontSize="40"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               Grid.Row="0"/>
+        </Grid>
+
+
+
+        <Grid Grid.Row="1" Padding="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="Button" x:Key="BaseButtonStyle" BasedOn="{StaticResource DefaultButtonStyle}">
+                    <Setter Property="FontSize" Value="18"/>
+                    <Setter Property="FontFamily" Value="Aptos"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="Margin" Value="1"/>
+                </Style>
+
+                <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+                    
+                </Style>
+
+                <Style TargetType="Button" x:Key="GreyButton" BasedOn="{StaticResource BaseButtonStyle}">
+                    <Setter Property="Background" Value="#20FFFFFF"/>
+                </Style>
+            </Grid.Resources>
+
+            <Button Content="%" Click="Percentage_Button"
+            Grid.Row="0" Grid.Column="0"/>
+            <Button Content="CE" Click="CE_Button"
+            Grid.Row="0" Grid.Column="1"/>
+            <Button Content="C" Click="C_Button"
+            Grid.Row="0" Grid.Column="2"/>
+            <Button Content="⌫" Click="Backspace_Button"
+            Grid.Row="0" Grid.Column="3"/>
+
+            <Button Content="¹/𝑥" Click="Recipropcal_Button"
+            Grid.Row="1" Grid.Column="0"/>
+            <Button Content="𝑥²" Click="Power_Button"
+            Grid.Row="1" Grid.Column="1"/>
+            <Button Content="²√𝑥" Click="SquareRoot_Button"
+            Grid.Row="1" Grid.Column="2"/>
+            <Button Content="÷" Click="Division_Button"
+            Grid.Row="1" Grid.Column="3"/>
+
+            <Button Content="7" Click="Seven_Button"
+            Grid.Row="2" Grid.Column="0" Style="{StaticResource GreyButton}"/>
+            <Button Content="8" Click="Eight_Button"
+            Grid.Row="2" Grid.Column="1" Style="{StaticResource GreyButton}"/>
+            <Button Content="9" Click="Nine_Button"
+            Grid.Row="2" Grid.Column="2" Style="{StaticResource GreyButton}"/>
+            <Button Content="×" Click="Multiplication_Button"
+            Grid.Row="2" Grid.Column="3" FontSize="24"/>
+
+            <Button Content="4" Click="Four_Button"
+            Grid.Row="3" Grid.Column="0" Style="{StaticResource GreyButton}"/>
+            <Button Content="5" Click="Five_Button"
+            Grid.Row="3" Grid.Column="1" Style="{StaticResource GreyButton}"/>
+            <Button Content="6" Click="Six_Button"
+            Grid.Row="3" Grid.Column="2" Style="{StaticResource GreyButton}"/>
+            <Button Content="-" Click="Minus_Button"
+            Grid.Row="3" Grid.Column="3" FontSize="24"/>
+
+            <Button Content="1" Click="One_Button"
+            Grid.Row="4" Grid.Column="0" Style="{StaticResource GreyButton}"/>
+            <Button Content="2" Click="Two_Button"
+            Grid.Row="4" Grid.Column="1" Style="{StaticResource GreyButton}"/>
+            <Button Content="3" Click="Three_Button"
+            Grid.Row="4" Grid.Column="2" Style="{StaticResource GreyButton}"/>
+            <Button Content="+" Click="Plus_Button"
+            Grid.Row="4" Grid.Column="3"
+                    FontSize="24"/>
+
+            <Button Content="⁺/₋" Click="Negative_Button"
+            Grid.Row="5" Grid.Column="0" Style="{StaticResource GreyButton}"/>
+            <Button Content="0" Click="Zero_Button"
+            Grid.Row="5" Grid.Column="1" Style="{StaticResource GreyButton}"/>
+            <Button Content="." Click="Dot_Button"
+            Grid.Row="5" Grid.Column="2" Style="{StaticResource GreyButton}"/>
+            <Button Content="=" Click="Equals_Button"
+            Grid.Row="5" Grid.Column="3" 
+            Background="{ThemeResource AccentTextFillColorTertiaryBrush}"
+            Foreground="{ThemeResource TextOnAccentFillColorPrimaryBrush}"
+            Style="{ThemeResource AccentButtonStyle}"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            Margin="1" FontSize="24"/>
+
+        </Grid>
+    </Grid>
 </Window>
